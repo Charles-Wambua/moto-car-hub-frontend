@@ -5,13 +5,13 @@ import { Shop } from "./pages/shop/shop";
 import { Contact } from "./pages/contact";
 import { Cart } from "./pages/cart/cart";
 import { Admin } from "./pages/admin/admin";
-import { ShopContextProvider } from "./context/shop-context";
+
 import Login from "./pages/auth/Login";
 
 function App() {
   return (
     <div className="App">
-      <ShopContextProvider>
+    
         <Router>
           <Navbar />
           <Routes>
@@ -24,7 +24,7 @@ function App() {
             <Route path="/cart" element={<Cart />} />
           </Routes>
         </Router>
-      </ShopContextProvider>
+      
     </div>
   );
 }
