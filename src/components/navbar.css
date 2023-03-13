@@ -1,0 +1,380 @@
+/* Background gradient */
+.container {
+  background-image: linear-gradient(to right, #6a11cb, #2575fc);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  padding: 0 20px;
+  border-radius: 10px;
+  }
+  
+  /* Logo h3 */
+  h3 {
+  font-size: 24px;
+  color: #ffffff;
+  margin: 0;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  h3:hover {
+  background-image: linear-gradient(to right, #2575fc, #6a11cb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  }
+  
+  /* Navbar links */
+  .links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+  
+  .links a {
+  color: #ffffff;
+  font-size: 18px;
+  text-decoration: none;
+  padding: 10px;
+  margin: 0 5px;
+  box-shadow: 2px 2px 5px rgba(241, 14, 14, 0.943);
+  transition: all 0.3s ease-in-out;
+  border-radius: 30px;
+  }
+  
+  .links a:hover {
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4);
+  }
+  
+  /* Shopping cart icon */
+  .links a:last-of-type {
+  margin-right: 0;
+  }
+  
+  /* Link to shopping cart */
+  .links a:last-of-type svg {
+  fill: #ffffff;
+  vertical-align: middle;
+  }
+  
+  .links a:last-of-type:hover svg {
+  fill: #2575fc;
+  }
+  
+  /* Media query for small screens */
+  @media only screen and (max-width: 600px) {
+  .links {
+  flex-direction: column;
+  }
+  
+  .links a {
+  margin: 5px 0;
+  }
+  }
+  
+  /* Dropdown menu for mobile devices */
+  @media only screen and (max-width: 500px) {
+  .links {
+  display:flow-root;
+  flex-direction: row;
+  position: absolute;
+  top: 80px;
+  left: 0;
+  background-color: #09585e;
+  box-shadow: 0px 0px 20px rgba(5, 240, 48, 0.219);
+  }
+  
+  /* Show dropdown menu when hovering over navbar */
+  .navbar:hover .links {
+  display: flex;
+  }
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
