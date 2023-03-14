@@ -16,7 +16,7 @@ const Login = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(`email: ${email}, password: ${password}`)
-    fetch("http://localhost:3001/login", {
+    fetch("https://moto-car-hub-api.onrender.com/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
