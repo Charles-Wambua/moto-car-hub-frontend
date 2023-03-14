@@ -9,7 +9,7 @@ export const Shop = () => {
   const navigate=useNavigate()
 
   useEffect(() => {
-    axios.get("http://localhost:3001/getCars").then((res) => {
+    axios.get("https://moto-car-hub-api.onrender.com/getCars").then((res) => {
       setProducts(res.data);
     });
   }, []);
