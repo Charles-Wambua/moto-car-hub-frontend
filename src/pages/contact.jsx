@@ -18,13 +18,13 @@ export const Contact = () => {
     <div className="seller-page">
       <div className="seller-info">
         <h2>Contact Seller</h2>
-        <p>Phone: +254114652533</p>
+        <p>Phone: +254792685635</p>
 
         <div className="social-media">
-          <a href="https://wa.me/254114652533">
+          <a href="https://wa.me/254792685635">
             <i className="fab fa-whatsapp" aria-label="WhatsApp"></i>
           </a>
-          <a href="https://www.instagram.com/thatsme.charles/">
+          <a href="https://www.instagram.com/m.unyaka/">
             <i className="fab fa-instagram" aria-label="Instagram"></i>
           </a>
           <a href="https://twitter.com/Charles59676543">
