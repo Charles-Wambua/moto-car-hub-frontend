@@ -7,14 +7,44 @@
   height: 80px;
   padding: 0 20px;
   border-radius: 10px;
+}
+
+@media screen and (max-width: 600px) {
+  .container {
+    flex-direction: column;
+    height: auto;
+    padding: 20px;
   }
+}
+
+h2 {
+  font-size: 34px;
+  color: #18c3d3;
+  margin: 0;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 2px 2px 5px rgba(241, 14, 14, 0.943);
+  }
+
+
+  h4 {
+    font-size: 34px;
+    color: #1111d4;
+    margin: 0;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 2px 5px rgba(50, 66, 165, 0.943);
+    }
+
+
+
+
   
   /* Logo h3 */
   h3 {
   font-size: 24px;
-  color: #ffffff;
+  color: #671b5b;
   margin: 0;
   text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 2px 2px 5px rgba(241, 14, 14, 0.943);
   }
   
   h3:hover {
@@ -38,7 +68,7 @@
   margin: 0 5px;
   box-shadow: 2px 2px 5px rgba(241, 14, 14, 0.943);
   transition: all 0.3s ease-in-out;
-  border-radius: 30px;
+  border-radius: 0px;
   }
   
   .links a:hover {
@@ -61,7 +91,7 @@
   }
   
   /* Media query for small screens */
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 100px) {
   .links {
   flex-direction: column;
   }
@@ -74,12 +104,12 @@
   /* Dropdown menu for mobile devices */
   @media only screen and (max-width: 500px) {
   .links {
-  display:flow-root;
-  flex-direction: row;
-  position: absolute;
+  display:inline;
+  flex-direction:row;
+  position:-webkit-sticky;
   top: 80px;
   left: 0;
-  background-color: #09585e;
+  /* background-color: #09585e; */
   box-shadow: 0px 0px 20px rgba(5, 240, 48, 0.219);
   }
   

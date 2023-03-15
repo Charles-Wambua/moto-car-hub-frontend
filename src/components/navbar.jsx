@@ -1,37 +1,37 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { ShoppingCart } from "phosphor-react";
-import { Car} from "phosphor-react";
+import { Car } from "phosphor-react";
+import { useNavigate } from "react-router-dom";
 
 import "./navbar.css";
 
 export const Navbar = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const authToken = localStorage.getItem("authToken"); // get the auth token from local storage
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     // Clear the user's authentication token or userID from localStorage
     localStorage.removeItem("token"); // or localStorage.removeItem("userID")
-    setIsLoggedIn(false);
+    navigate("/login");
   };
 
   return (
     <div className="container">
-      <h3>MOTO CAR HUB   <Car/><Car/><Car/>  </h3>
+      <h2>
+        MOTO CAR HUB <Car />
+        <Car />
+        <Car />{" "}
+      </h2>
       <div className="navbar">
         <div className="links">
           <Link to="/">Home</Link>
           <Link to="/contact">ContactMe</Link>
-
           {/* Show Login or Logout link based on whether user is logged in */}
-          {isLoggedIn ? (
-            <button onClick={handleLogout}>Logout</button>
-          ) : (
-            <Link to="/login">Login</Link>
-          )}
 
+          {!authToken && <Link to="/login">Login</Link>}
           {/* Show Admin link only when user is logged in */}
-          {isLoggedIn && <Link to="/admin">Admin</Link>}
-
+          {authToken && <Link to="/admin">Admin</Link>}
           <Link to="/cart">
             <ShoppingCart size={32} />
           </Link>
@@ -40,24 +40,3 @@ export const Navbar = () => {
     </div>
   );
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

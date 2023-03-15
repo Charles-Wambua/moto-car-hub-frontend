@@ -79,7 +79,7 @@ export const Admin = () => {
               height="150"
             />
           )}
-          <button type="submit">Create Product</button>
+          <button type="submit">Click to upload</button>
         </form>
       </div>
     </div>

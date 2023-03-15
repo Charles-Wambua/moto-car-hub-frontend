@@ -7,17 +7,27 @@ import { Cart } from "./pages/cart/cart";
 import { Admin } from "./pages/admin/admin";
 
 import Login from "./pages/auth/Login";
+import { Logout } from "./pages/auth/Logout";
 
 function App() {
+  // const token = localStorage.getItem("token");
+  // const isLoggedIn = token ? true : false;
+  const authToken = localStorage.getItem("authToken"); // get the auth token from local storage
+
   return (
     <div className="App">
     
         <Router>
-          <Navbar />
+          <Navbar  />
           <Routes>
             <Route path="/" element={<Shop />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/login" element={<Login />} />
+          {/* {authToken && ( */}
+            <Route path="/logout" element={<Logout />} />
+          {/* )} */}
+          {/* {!authToken &&( */}
+              <Route path="/login" element={<Login />} />
+            {/* )} */}
             <Route path="/admin" element={<Admin />}>
               <Route path="carrt" element={<Cart />} />
             </Route>
@@ -30,3 +40,33 @@ function App() {
 }
 
 export default App;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

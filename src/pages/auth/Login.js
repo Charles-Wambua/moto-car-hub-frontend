@@ -9,13 +9,9 @@ const Login = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const navigate = useNavigate();
 
-  
-  
-  
-  
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(`email: ${email}, password: ${password}`)
+    console.log(`email: ${email}, password: ${password}`);
     fetch("https://moto-car-hub-api.onrender.com/login", {
       method: "POST",
       headers: {
@@ -23,9 +19,7 @@ const Login = () => {
       },
       body: JSON.stringify({ email, password }),
     })
-     
-     
-    .then((response) => {
+      .then((response) => {
         if (response.ok) {
           return response.json();
         } else {
@@ -33,56 +27,20 @@ const Login = () => {
         }
       })
       .then((data) => {
+        localStorage.setItem("authToken", data.token); // store the token in localStorage
         setIsAuthenticated(true);
-        navigate("/admin");
+        // navigate("/admin");
       })
       .catch((error) => {
         console.error(error);
         alert(error.message);
       });
-      
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
   };
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
 
   return isAuthenticated ? (
     <div>
-      <h1>Admin page</h1>
-      {<Admin/>}
+      
+      {<Admin />}
     </div>
   ) : (
     <div className="login-container">
@@ -117,6 +75,10 @@ const Login = () => {
 };
 
 export default Login;
+
+
+
+
 
 
 

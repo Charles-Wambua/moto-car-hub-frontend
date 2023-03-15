@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "../App.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
-
 export const Contact = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -27,8 +26,11 @@ export const Contact = () => {
           <a href="https://www.instagram.com/m.unyaka/">
             <i className="fab fa-instagram" aria-label="Instagram"></i>
           </a>
-          <a href="https://twitter.com/Charles59676543">
+          <a href="https://twitter.com">
             <i className="fab fa-twitter" aria-label="Twitter"></i>
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=100085777394179">
+            <i className="fab fa-facebook" aria-label="Twitter"></i>
           </a>
         </div>
       </div>
