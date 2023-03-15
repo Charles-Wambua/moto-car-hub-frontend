@@ -31,7 +31,7 @@ export const Shop = () => {
 
   const deleteProduct = (productId) => {
     axios
-      .delete(`http://localhost:3001/deleteCar/${productId}`, {
+      .delete(`https://moto-car-hub-api.onrender.com/deleteCar/${productId}`, {
         headers: {
           Authorization: `Bearer ${authToken}`, // pass the auth token as a header
         },
