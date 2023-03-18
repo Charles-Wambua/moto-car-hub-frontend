@@ -2,6 +2,8 @@ import { useState } from "react";
 import axios from "axios";
 import "../../App.css";
 import { useNavigate } from "react-router-dom";
+import { showSpinner } from "../../components/Spinner";
+import { hideSpinner } from "../../components/Spinner";
 
 export const Admin = () => {
   const [listOfCars, setListOfCars] = useState([]);
@@ -19,6 +21,7 @@ export const Admin = () => {
 
   const createPost = async (event) => {
     event.preventDefault();
+    showSpinner(); // Show spinner before sending the request
     const formData = new FormData();
     formData.append("name", name);
     formData.append("description", description);
@@ -26,7 +29,7 @@ export const Admin = () => {
     formData.append("image", image, image.name);
 
     try {
-      const res = await axios.post("https://moto-car-hub-api.onrender.com/addCar", formData, {
+      const res = await axios.post("https://moto-car-hub-api.onrender.com", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -36,6 +39,8 @@ export const Admin = () => {
       navigate("/");
     } catch (err) {
       alert(err.message);
+    } finally {
+      hideSpinner(); // Hide spinner after request completes (whether successful or not)
     }
   };
 

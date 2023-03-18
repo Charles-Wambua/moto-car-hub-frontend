@@ -4,6 +4,8 @@ import "../../App.css";
 import { useNavigate } from "react-router-dom";
 import "../shop/shop.css";
 import { FaTrashAlt } from "react-icons/fa"; // import the trash can icon
+import { showSpinner } from "../../components/Spinner";
+import { hideSpinner } from "../../components/Spinner";
 
 export const Shop = () => {
   const [products, setProducts] = useState([]);
@@ -12,16 +14,19 @@ export const Shop = () => {
   const authToken = localStorage.getItem("authToken"); // get the auth token from local storage
 
   useEffect(() => {
+    //showSpinner(); // show the spinner before data is fetched
     axios
       .get("https://moto-car-hub-api.onrender.com/getCars")
       .then((res) => {
         setProducts(res.data.reverse()); // Reverse the order of the products array
         setIsLoading(false); // set isLoading to false once data has been fetched
+        //hideSpinner(); // hide the spinner once data has been fetched
       })
       .catch((err) => {
         console.log(err);
         // Display error message to user
         setIsLoading(false); // set isLoading to false if an error occurs
+        //hideSpinner(); // hide the spinner if an error occurs
       });
   }, []);
 
@@ -80,132 +85,3 @@ export const Shop = () => {
     </div>
   );
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
