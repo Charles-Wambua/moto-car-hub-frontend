@@ -41,7 +41,7 @@ export const Navbar = () => {
         <div className="links">
           <Link to="/">Home</Link>
           {!isAuthenticated  && <Link to="/login">Login</Link>}
-          {isAdmin && <Link to="/admin">Admin</Link>}
+          {isAuthenticated && <Link to="/admin">Admin</Link>}
          
           {isAuthenticated && <button onClick={handleLogout}>Logout</button>}
          
