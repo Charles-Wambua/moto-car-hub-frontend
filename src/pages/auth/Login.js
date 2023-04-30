@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
 import { Admin } from "../admin/admin";
+import { Shop } from "../shop/shop";
 
 const Login = () => {
   const [password, setPassword] = useState("");
@@ -12,7 +13,7 @@ const Login = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(`email: ${email}, password: ${password}`);
-    fetch("https://moto-car-hub-api.onrender.com/login", {
+    fetch("https://moto-car-hub.onrender.com/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -29,6 +30,7 @@ const Login = () => {
       .then((data) => {
         localStorage.setItem("authToken", data.token); // store the token in localStorage
         setIsAuthenticated(true);
+        localStorage.setItem("isAdmin", data.isAdmin); // store isAdmin status in localStorage
         // navigate("/admin");
       })
       .catch((error) => {
@@ -37,10 +39,13 @@ const Login = () => {
       });
   };
 
+  
+
+
   return isAuthenticated ? (
     <div>
       
-      {<Admin />}
+      {<Shop />}
     </div>
   ) : (
     <div className="login-container">
@@ -68,8 +73,12 @@ const Login = () => {
         </div>
         <button type="submit" className="login-button">
           Login
-        </button>
-      </form>
+          </button>
+          <div className="register-link">
+        You do not have an account? <a href="/register">Register here</a>
+      </div>
+        </form>
+       
     </div>
   );
 };

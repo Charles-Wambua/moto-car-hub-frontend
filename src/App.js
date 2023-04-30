@@ -5,9 +5,13 @@ import { Shop } from "./pages/shop/shop";
 import { Contact } from "./pages/contact";
 import { Cart } from "./pages/cart/cart";
 import { Admin } from "./pages/admin/admin";
-
+import Register from "./pages/auth/Register";
 import Login from "./pages/auth/Login";
+import { ViewMore } from "./pages/shop/ViewMore";
 import { Logout } from "./pages/auth/Logout";
+import { AddMore } from "./pages/admin/UpdateProduct";
+import { UpdateProduct } from "./pages/admin/UpdateProduct";
+import { RegisteredUsers } from "./pages/auth/RegisteredUsers";
 
 function App() {
   // const token = localStorage.getItem("token");
@@ -27,9 +31,14 @@ function App() {
           {/* )} */}
           {/* {!authToken &&( */}
               <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/viewmore" element={<ViewMore />} />
+              <Route path="/addmore/:id" element={<UpdateProduct />} />
+              <Route path="/users" element={<RegisteredUsers />} />
+
             {/* )} */}
             <Route path="/admin" element={<Admin />}>
-              <Route path="carrt" element={<Cart />} />
+              <Route path="cart" element={<Cart />} />
             </Route>
             <Route path="/cart" element={<Cart />} />
           </Routes>

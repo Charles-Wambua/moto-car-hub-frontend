@@ -1,3 +1,4 @@
+import './spinner-1.css'
 import './spinner.css'
 
 export function showSpinner() {

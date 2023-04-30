@@ -1,40 +1,50 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ShoppingCart } from "phosphor-react";
 import { Car } from "phosphor-react";
 import { useNavigate } from "react-router-dom";
-
+import axios from "axios";
 import "./navbar.css";
 
 export const Navbar = () => {
-  const authToken = localStorage.getItem("authToken"); // get the auth token from local storage
-  const navigate = useNavigate();
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const navigate= useNavigate()
+
+  useEffect(() => {
+    const isAdminFromLocalStorage = localStorage.getItem("isAdmin") === "true";
+    setIsAdmin(isAdminFromLocalStorage);
+    const authToken = localStorage.getItem("authToken");
+    setIsAuthenticated(authToken)
+    
+  }, []);
+  
 
   const handleLogout = () => {
-    // Clear the user's authentication token or userID from localStorage
-    localStorage.removeItem("token"); // or localStorage.removeItem("userID")
+    localStorage.removeItem("authToken");
+    localStorage.removeItem("isAdmin");
     navigate("/login");
   };
 
   return (
     <div className="container">
       <h2>
-        MOTO CAR HUB <Car />
+      DrivewayAuto.com <hr /> <Car />
         <Car />
-        <Car />{" "}
+        <Car />
+        <Car />
+        <Car />
+        <Car />
+        <Car />
+        <Car />
       </h2>
       <div className="navbar">
         <div className="links">
           <Link to="/">Home</Link>
-          <Link to="/contact">ContactMe</Link>
-          {/* Show Login or Logout link based on whether user is logged in */}
-
-          {!authToken && <Link to="/login">Login</Link>}
-          {/* Show Admin link only when user is logged in */}
-          {authToken && <Link to="/admin">Admin</Link>}
-          <Link to="/cart">
-            <ShoppingCart size={32} />
-          </Link>
+          {!isAuthenticated  && <Link to="/login">Login</Link>}
+          {isAdmin && <Link to="/admin">Admin</Link>}
+         
+          {isAuthenticated && <button onClick={handleLogout}>Logout</button>}
+         
         </div>
       </div>
     </div>

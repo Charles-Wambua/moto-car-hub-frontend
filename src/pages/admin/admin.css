@@ -1,0 +1,46 @@
+/* Adjust this media query breakpoint to your liking */
+@media (max-width: 768px) {
+  .maincontainer {
+    flex-direction: column;
+    height: auto;
+  }
+  
+  .sec1 {
+    flex-basis: auto;
+    width: 100%;
+  }
+  
+  .sec2 {
+    flex-basis: auto;
+    width: 100%;
+  }
+  
+  .maincontainer::before {
+    display: none;
+  }
+}
+
+/* Adjust these styles for larger screens */
+.maincontainer {
+  display: flex;
+  height: 100vh; /* set the height to the full height of the viewport */
+  position: relative; /* create a containing block for the pseudo-element */
+}
+
+.sec1 {
+  flex-basis: 25%;
+}
+
+.sec2 {
+  flex-basis: 75%;
+}
+
+.maincontainer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 25%; /* adjust the position of the line to align with the edge of sec1 */
+  width: 1px;
+  background-color: #ccc;
+}

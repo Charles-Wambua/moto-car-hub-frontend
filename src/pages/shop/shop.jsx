@@ -1,33 +1,43 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import "../../App.css";
+// import "../../App.css";
 import { useNavigate } from "react-router-dom";
 import "../shop/shop.css";
-import { FaTrashAlt } from "react-icons/fa"; // import the trash can icon
-import { showSpinner } from "../../components/Spinner";
-import { hideSpinner } from "../../components/Spinner";
-
+import { FaTrashAlt } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 export const Shop = () => {
   const [products, setProducts] = useState([]);
-  const [isLoading, setIsLoading] = useState(true); // add isLoading state variable
+  const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
-  const authToken = localStorage.getItem("authToken"); // get the auth token from local storage
+  const authToken = localStorage.getItem("authToken");
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  
 
   useEffect(() => {
-    //showSpinner(); // show the spinner before data is fetched
+    const isAdminFromLocalStorage = localStorage.getItem("isAdmin") === "true";
+    setIsAdmin(isAdminFromLocalStorage);
+    
+    
+    if (!authToken) { // check if the user is not logged in
+      navigate("/login"); // redirect to login page
+      return;
+    }
+    
+   
     axios
-      .get("https://moto-car-hub-api.onrender.com/getCars")
+      .get("https://moto-car-hub.onrender.com/getCars")
       .then((res) => {
-        setProducts(res.data.reverse()); // Reverse the order of the products array
-        setIsLoading(false); // set isLoading to false once data has been fetched
-        //hideSpinner(); // hide the spinner once data has been fetched
+        setProducts(res.data.reverse());
+        setIsLoading(false);
+       
       })
       .catch((err) => {
         console.log(err);
-        // Display error message to user
-        setIsLoading(false); // set isLoading to false if an error occurs
-        //hideSpinner(); // hide the spinner if an error occurs
+        setIsLoading(false);
+     
       });
+    
   }, []);
 
   const contactSeller = (sellerId) => {
@@ -36,7 +46,7 @@ export const Shop = () => {
 
   const deleteProduct = (productId) => {
     axios
-      .delete(`https://moto-car-hub-api.onrender.com/deleteCar/${productId}`, {
+      .delete(`https://moto-car-hub.onrender.com/deleteCar/${productId}`, {
         headers: {
           Authorization: `Bearer ${authToken}`, // pass the auth token as a header
         },
@@ -54,12 +64,12 @@ export const Shop = () => {
   return (
     <div>
       {isLoading ? (
-        <div className="spinner"></div> // display spinner while data is being fetched
+      <div class="lds-ripple"><div></div><div></div></div>
       ) : (
         <div className="products-container">
           {products.map((product) => (
             <div className="product-card" key={product._id}>
-              {authToken && ( // show the delete button only if the user is logged in
+              {authToken && isAdmin && ( // show the delete button only if the user is logged in
                 <button
                   className="delete-button"
                   onClick={() => deleteProduct(product._id)}
@@ -68,9 +78,14 @@ export const Shop = () => {
                 </button>
               )}
               <div className="product-image">
-                <img src={product.image} alt={product.name} />
-              </div>
+              {product.images.map((image) => (
+                <img key={image} src={image} alt={product.name} />
+                 ))}
+                </div>
+
               <div className="product-info">
+              {/* <Link to="/viewmore" >View more about this ride</Link> <br />
+              <Link to={`/addMore/${product._id}`} >Add Details</Link> */}
                 <h3>{product.name}</h3>
                 <p>{product.description}</p>
                 <h4 className="price">{product.price.toLocaleString()}</h4>
