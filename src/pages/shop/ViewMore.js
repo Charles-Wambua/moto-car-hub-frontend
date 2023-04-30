@@ -14,7 +14,7 @@ export const ViewMore = ({ match }) => {
   useEffect(() => {
     const productId = match.params.id; // Get the ID from the URL parameter
     axios
-      .get(`https://moto-car-hub.onrender.com/getCar/${productId}`)
+      .get(`https://moto-car-hub-api.onrender.com/getCar/${productId}`)
       .then((res) => {
         setProduct(res.data);
         setIsLoading(false);

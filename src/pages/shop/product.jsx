@@ -11,7 +11,7 @@ export const Product = (props) => {
   const cartItemCount = cartItems[id];
 
   useEffect(() => {
-    axios.get("https://moto-car-hub.onrender.com/getCars").then((res) => {
+    axios.get("https://moto-car-hub-api.onrender.com/getCars").then((res) => {
       setListOfCars(res.data);
     });
   }, []);

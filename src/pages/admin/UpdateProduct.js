@@ -16,7 +16,7 @@ export const UpdateProduct = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const res = await axios.get(`https://moto-car-hub.onrender.com/updateCar/${id}`);
+        const res = await axios.get(`https://moto-car-hub-api.onrender.com/updateCar/${id}`);
         const { name, description, price, images } = res.data;
         setName(name);
         setDescription(description);
@@ -50,7 +50,7 @@ export const UpdateProduct = () => {
     });
 
     try {
-      await axios.put(`https://moto-car-hub.onrender.com/updateCar/${id}`, formData, {
+      await axios.put(`https://moto-car-hub-api.onrender.com/updateCar/${id}`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

@@ -26,7 +26,7 @@ export const Shop = () => {
     
    
     axios
-      .get("https://moto-car-hub.onrender.com/getCars")
+      .get("https://moto-car-hub-api.onrender.com/getCars")
       .then((res) => {
         setProducts(res.data.reverse());
         setIsLoading(false);
@@ -46,7 +46,7 @@ export const Shop = () => {
 
   const deleteProduct = (productId) => {
     axios
-      .delete(`https://moto-car-hub.onrender.com/deleteCar/${productId}`, {
+      .delete(`https://moto-car-hub-api.onrender.com/deleteCar/${productId}`, {
         headers: {
           Authorization: `Bearer ${authToken}`, // pass the auth token as a header
         },

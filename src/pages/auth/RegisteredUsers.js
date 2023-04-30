@@ -8,7 +8,7 @@ export const RegisteredUsers = () => {
     useEffect(() => {
       const getUsers = async () => {
         try {
-          const response = await axios.get('https://moto-car-hub.onrender.com/users');
+          const response = await axios.get('https://moto-car-hub-api.onrender.com/users');
           setUsers(response.data);
         } catch (error) {
           console.error(error);

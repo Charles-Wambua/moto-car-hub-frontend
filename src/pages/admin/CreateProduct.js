@@ -35,7 +35,7 @@ export const CreateProduct = () => {
     });
 
     try {
-      const res = await axios.post("https://moto-car-hub.onrender.com/addCar", formData, {
+      const res = await axios.post("https://moto-car-hub-api.onrender.com/addCar", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
