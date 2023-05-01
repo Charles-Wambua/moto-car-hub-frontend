@@ -43,7 +43,7 @@ export const Navbar = () => {
           {!isAuthenticated  && <Link to="/register">Register</Link>}
           {isAuthenticated && isAdmin && <Link to="/admin">Admin</Link>}
          
-          {isAuthenticated && <button onClick={handleLogout}>Logout</button>}
+          
          
         </div>
       </div>
