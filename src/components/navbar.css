@@ -1,6 +1,8 @@
 /* Background gradient */
 .container {
-  background-image: linear-gradient(to right, #6a11cb, #2575fc);
+  background-image: url("D:\moto-car-hub-frontend\src\components\navimage.jpg"); /* Replace with your image path */
+  background-size: cover;
+  background-position: center;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -8,6 +10,7 @@
   padding: 0 20px;
   border-radius: 10px;
 }
+
 
 @media screen and (max-width: 600px) {
   .container {
