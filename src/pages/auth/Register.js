@@ -28,7 +28,7 @@ const Register = () => {
       })
       .then((data) => {
         localStorage.setItem("authToken", data.token);
-        navigate("/shop");
+        navigate("/");
       })
       .catch((error) => {
         console.error(error);
