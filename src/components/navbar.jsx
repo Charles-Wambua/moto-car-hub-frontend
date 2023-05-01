@@ -22,7 +22,7 @@ export const Navbar = () => {
   const handleLogout = () => {
     localStorage.removeItem("authToken");
     localStorage.removeItem("isAdmin");
-    navigate("/register");
+    navigate("/login");
   };
 
   return (
@@ -42,7 +42,7 @@ export const Navbar = () => {
           <Link to="/">Home</Link>
           {!isAuthenticated  && <Link to="/register">Register</Link>}
           {isAuthenticated && isAdmin && <Link to="/admin">Admin</Link>}
-         
+          {isAuthenticated && <button onClick={handleLogout}>Logout</button>}
           
          
         </div>
