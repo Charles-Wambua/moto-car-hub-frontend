@@ -1,6 +1,6 @@
 /* Background gradient */
 .container {
-  background-image: url("D:\moto-car-hub-frontend\src\components\navimage.jpg"); /* Replace with your image path */
+  background-image: url("navimage.jpg"); /* Replace with your image path */
   background-size: cover;
   background-position: center;
   display: flex;
