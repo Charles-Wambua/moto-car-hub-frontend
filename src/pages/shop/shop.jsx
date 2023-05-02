@@ -20,7 +20,7 @@ export const Shop = () => {
     
     
     if (!authToken) { // check if the user is not logged in
-      navigate("/register"); // redirect to login page
+      navigate("/login"); // redirect to login page
       return;
     }
     
