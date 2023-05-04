@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-// import "../../App.css";
 import { useNavigate } from "react-router-dom";
-import "../shop/shop.css";
 import { FaTrashAlt } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import { Carousel } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./shop.css";
+
 export const Shop = () => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -12,32 +14,25 @@ export const Shop = () => {
   const authToken = localStorage.getItem("authToken");
   const [isAdmin, setIsAdmin] = useState(false);
 
-  
-
   useEffect(() => {
     const isAdminFromLocalStorage = localStorage.getItem("isAdmin") === "true";
     setIsAdmin(isAdminFromLocalStorage);
-    
-    
-    if (!authToken) { // check if the user is not logged in
-      navigate("/login"); // redirect to login page
+
+    if (!authToken) {
+      navigate("/login");
       return;
     }
-    
-   
+
     axios
       .get("https://moto-car-hub-api.onrender.com/getCars")
       .then((res) => {
         setProducts(res.data.reverse());
         setIsLoading(false);
-       
       })
       .catch((err) => {
         console.log(err);
         setIsLoading(false);
-     
       });
-    
   }, []);
 
   const contactSeller = (sellerId) => {
@@ -48,28 +43,44 @@ export const Shop = () => {
     axios
       .delete(`https://moto-car-hub-api.onrender.com/deleteCar/${productId}`, {
         headers: {
-          Authorization: `Bearer ${authToken}`, // pass the auth token as a header
+          Authorization: `Bearer ${authToken}`,
         },
       })
       .then((res) => {
-        // Remove the deleted product from the state
         setProducts(products.filter((product) => product._id !== productId));
       })
       .catch((err) => {
         console.log(err);
-        // Display error message to user
       });
+  };
+
+  const handleImageClick = (event, productIndex, imageIndex) => {
+    event.stopPropagation();
+    setProducts((prevProducts) =>
+      prevProducts.map((product, index) => {
+        if (index === productIndex) {
+          return {
+            ...product,
+            activeImageIndex: imageIndex,
+          };
+        }
+        return product;
+      })
+    );
   };
 
   return (
     <div>
       {isLoading ? (
-      <div class="lds-ripple"><div></div><div></div></div>
+        <div className="lds-ripple">
+          <div></div>
+          <div></div>
+        </div>
       ) : (
         <div className="products-container">
-          {products.map((product) => (
+          {products.map((product, productIndex) => (
             <div className="product-card" key={product._id}>
-              {authToken && isAdmin && ( // show the delete button only if the user is logged in
+              {authToken && isAdmin && (
                 <button
                   className="delete-button"
                   onClick={() => deleteProduct(product._id)}
@@ -78,14 +89,37 @@ export const Shop = () => {
                 </button>
               )}
               <div className="product-image">
-              {product.images.map((image) => (
-                <img key={image} src={image} alt={product.name} />
-                 ))}
-                </div>
+                <Carousel
+                  activeIndex={product.activeImageIndex || 0}
+                  onSelect={(selectedIndex) =>
+                    setProducts((prevProducts) =>
+                      prevProducts.map((prevProduct, index) => {
+                        if (index === productIndex) {
+                          return {
+                            ...prevProduct,
+                            activeImageIndex: selectedIndex,
+                          };
+                        }
+                        return prevProduct;
+                      })
+                    )
+                  }
+                >
+                  {product.images.map((image, imageIndex) => (
+                    <Carousel.Item key={image}>
+                      <img
+                        src={image}
+                        alt={product.name}
+                        onClick={(event) =>
+                          handleImageClick(event, productIndex, imageIndex)
+                        }
+                      />
+                    </Carousel.Item>
+                  ))}
+                </Carousel>
+              </div>
 
               <div className="product-info">
-              {/* <Link to="/viewmore" >View more about this ride</Link> <br />
-              <Link to={`/addMore/${product._id}`} >Add Details</Link> */}
                 <h3>{product.name}</h3>
                 <p>{product.description}</p>
                 <h4 className="price">{product.price.toLocaleString()}</h4>

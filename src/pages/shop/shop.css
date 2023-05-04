@@ -67,6 +67,64 @@ button:hover {
   background-color: #3e8e41;
 }
 
+.carousel-container {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
+  height: 300px;
+  position: relative;
+  scroll-behavior:smooth;
+}
+
+.carousel-button {
+  background-color: transparent;
+  border: none;
+  color: #0b5cb9;
+  cursor: pointer;
+  font-size: 2rem;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.left-button {
+  left: 10;
+}
+
+.right-button {
+  right: 10;
+}
+
+.carousel-container::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-container img {
+  flex: 0 0 auto;
+  width: 100%;
+  object-fit: cover;
+  height: auto;
+  scroll-snap-align: start;
+}
+
+.carousel-container > div {
+  display: flex;
+  flex-wrap: nowrap;
+  animation: scroll 5s linear infinite;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+
+
 /* Background gradient */
 body {
   background: linear-gradient(to bottom right, #22d26c, #431fd4);
@@ -94,26 +152,6 @@ body {
 .price::after {
   content: "";
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
