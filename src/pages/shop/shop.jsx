@@ -18,10 +18,7 @@ export const Shop = () => {
     const isAdminFromLocalStorage = localStorage.getItem("isAdmin") === "true";
     setIsAdmin(isAdminFromLocalStorage);
 
-    if (!authToken) {
-      navigate("/login");
-      return;
-    }
+  
 
     axios
       .get("https://moto-car-hub-api.onrender.com/getCars")
